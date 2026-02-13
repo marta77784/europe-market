@@ -132,6 +132,35 @@ nav a.active {
   cursor: pointer;
 }
 
+.lang-switch {
+  display: flex;
+  gap: 4px;
+  margin-left: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.lang-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lang-btn.active {
+  background: white;
+  color: var(--red);
+}
+
+.lang-btn:hover { color: white; }
+
 /* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 40%, #8B0000 100%);
@@ -1607,11 +1636,16 @@ nav a.active {
     </div>
     <button class="mobile-menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
     <nav id="nav">
-      <a class="active" onclick="showPage('home')">Главная</a>
-      <a onclick="showPage('products')">Продукты</a>
-      <a onclick="showPage('board')">Объявления</a>
-      <a onclick="showPage('messenger')">💬 Чат</a>
-      <a onclick="showPage('about')">О нас</a>
+      <a class="active" onclick="showPage('home')" data-ru="Главная" data-en="Home" data-pl="Strona główna">Главная</a>
+      <a onclick="showPage('products')" data-ru="Продукты" data-en="Products" data-pl="Produkty">Продукты</a>
+      <a onclick="showPage('board')" data-ru="Объявления" data-en="Board" data-pl="Ogłoszenia">Объявления</a>
+      <a onclick="showPage('messenger')" data-ru="💬 Чат" data-en="💬 Chat" data-pl="💬 Czat">💬 Чат</a>
+      <a onclick="showPage('about')" data-ru="О нас" data-pl="O nas" data-en="About" data-pl="O nas">О нас</a>
+      <div class="lang-switch">
+        <button onclick="setLang('ru')" class="lang-btn active" id="langRu">RU</button>
+        <button onclick="setLang('en')" class="lang-btn" id="langEn">EN</button>
+        <button onclick="setLang('pl')" class="lang-btn" id="langPl">PL</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -1622,14 +1656,14 @@ nav a.active {
     <img src="img/logo.jpeg" alt="EM" class="hero-logo">
     <h2 style="font-size:64px;letter-spacing:3px;text-shadow:3px 3px 0px rgba(0,0,0,0.4), 0 0 20px rgba(0,0,0,0.2);"><span style="color:#FFFFFF;font-weight:900;">EUROPE</span> <em style="color:#FFD700;font-weight:900;">MARKET</em></h2>
     <p style="font-size:13px;letter-spacing:6px;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,0.7);margin-bottom:20px;">Grocery Store from Europe</p>
-    <p style="font-size:19px;line-height:1.7;">Европейский продуктовый магазин в Fort Myers, Florida.<br>Продукты из <strong>России</strong>, <strong>Белоруссии</strong>, <strong>Украины</strong>, <strong>Польши</strong>, <strong>Германии</strong>, <strong>Чехии</strong> и других стран — <em style="color:var(--gold);font-style:normal;font-weight:800;">всё как дома!</em></p>
+    <p style="font-size:19px;line-height:1.7;" data-ru="Европейский продуктовый магазин в Fort Myers, Florida.<br>Продукты из <strong>России</strong>, <strong>Белоруссии</strong>, <strong>Украины</strong>, <strong>Польши</strong>, <strong>Германии</strong>, <strong>Чехии</strong> и других стран — <em style='color:var(--gold);font-style:normal;font-weight:800;'>всё как дома!</em>" data-en="European grocery store in Fort Myers, Florida.<br>Products from <strong>Russia</strong>, <strong>Belarus</strong>, <strong>Ukraine</strong>, <strong>Poland</strong>, <strong>Germany</strong>, <strong>Czech Republic</strong> and more — <em style='color:var(--gold);font-style:normal;font-weight:800;'>just like home!</em>" data-pl="Europejski sklep spożywczy w Fort Myers, Floryda.<br>Produkty z <strong>Rosji</strong>, <strong>Białorusi</strong>, <strong>Ukrainy</strong>, <strong>Polski</strong>, <strong>Niemiec</strong>, <strong>Czech</strong> i innych krajów — <em style='color:var(--gold);font-style:normal;font-weight:800;'>wszystko jak w domu!</em>" >Европейский продуктовый магазин в Fort Myers, Florida.<br>Продукты из <strong>России</strong>, <strong>Белоруссии</strong>, <strong>Украины</strong>, <strong>Польши</strong>, <strong>Германии</strong>, <strong>Чехии</strong> и других стран — <em style="color:var(--gold);font-style:normal;font-weight:800;">всё как дома!</em></p>
     <div class="hero-tags">
-      <span class="hero-tag">🍖 Мясо и колбасы</span>
-      <span class="hero-tag">🧀 Сыры и молочное</span>
-      <span class="hero-tag">🍞 Свежий хлеб</span>
-      <span class="hero-tag">🍬 Конфеты и сладости</span>
-      <span class="hero-tag">☕ Кофе и чай</span>
-      <span class="hero-tag">🥣 Горячие обеды</span>
+      <span class="hero-tag" data-ru="🍖 Мясо и колбасы" data-en="🍖 Meat &amp; Sausages" data-pl="🍖 Mięso i kiełbasy" >🍖 Мясо и колбасы</span>
+      <span class="hero-tag" data-ru="🧀 Сыры и молочное" data-pl="🧀 Sery i nabiał" data-en="🧀 Cheese & Dairy" >🧀 Сыры и молочное</span>
+      <span class="hero-tag" data-ru="🍞 Свежий хлеб" data-pl="🍞 Świeży chleb" data-en="🍞 Fresh Bread" >🍞 Свежий хлеб</span>
+      <span class="hero-tag" data-ru="🍬 Конфеты и сладости" data-pl="🍬 Cukierki i słodycze" data-en="🍬 Candy & Sweets" >🍬 Конфеты и сладости</span>
+      <span class="hero-tag" data-ru="☕ Кофе и чай" data-pl="☕ Kawa i herbata" data-en="☕ Coffee & Tea" >☕ Кофе и чай</span>
+      <span class="hero-tag" data-ru="🥣 Горячие обеды" data-pl="🥣 Gorące obiady" data-en="🥣 Hot Lunches" >🥣 Горячие обеды</span>
     </div>
   </div>
 </div>
@@ -1656,15 +1690,15 @@ nav a.active {
 
   <!-- COUPON BANNER -->
   <div onclick="openCoupon()" style="max-width:600px;margin:0 auto 40px;cursor:pointer;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(226,26,34,0.3);transition:transform 0.3s;position:relative;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-    <img src="img/coupon.png" alt="Super Coupon 5% OFF" style="width:100%;display:block;">
+    <img src="img/coupon.jpeg" alt="Super Coupon 5% OFF" style="width:100%;display:block;">
     <div style="background:var(--red);padding:12px;text-align:center;">
-      <span style="color:white;font-weight:800;font-size:16px;">📧 Нажмите чтобы получить купон по Email или SMS 📱</span>
+      <span style="color:white;font-weight:800;font-size:16px;" data-ru="📧 Нажмите чтобы получить купон по Email или SMS 📱" data-pl="📧 Kliknij aby otrzymać kupon przez Email lub SMS 📱" data-en="📧 Click to get coupon via Email or SMS 📱" >📧 Нажмите чтобы получить купон по Email или SMS 📱</span>
     </div>
   </div>
 
   <div class="section-head">
-    <h2>Добро пожаловать!</h2>
-    <p>Ваш кусочек Европы в Southwest Florida</p>
+    <h2 data-ru="Добро пожаловать!" data-pl="Witamy!" data-en="Welcome!" >Добро пожаловать!</h2>
+    <p data-ru="Ваш кусочек Европы в Southwest Florida" data-pl="Twój kawałek Europy w Southwest Florida" data-en="Your piece of Europe in Southwest Florida" >Ваш кусочек Европы в Southwest Florida</p>
   </div>
 
   <div class="gallery-grid">
@@ -1731,8 +1765,8 @@ nav a.active {
 <!-- ===== PRODUCTS ===== -->
 <div class="page" id="page-products">
   <div class="section-head">
-    <h2>Наши продукты</h2>
-    <p>Более 2000 наименований из Европы</p>
+    <h2 data-ru="Наши продукты" data-pl="Nasze produkty" data-en="Our Products" >Наши продукты</h2>
+    <p data-ru="Более 2000 наименований из Европы" data-pl="Ponad 2000 artykułów z Europy" data-en="Over 2000 items from Europe" >Более 2000 наименований из Европы</p>
   </div>
   <div class="prod-filters">
     <button class="prod-btn active" onclick="fProd('all',this)">Все</button>
@@ -1750,8 +1784,8 @@ nav a.active {
 <!-- ===== BULLETIN BOARD ===== -->
 <div class="page" id="page-board">
   <div class="board-top">
-    <h2>📌 Стена объявлений</h2>
-    <button class="add-note-btn" onclick="openModal()">✏️ Добавить объявление</button>
+    <h2 data-ru="📌 Стена объявлений" data-pl="📌 Tablica ogłoszeń" data-en="📌 Bulletin Board" >📌 Стена объявлений</h2>
+    <button class="add-note-btn" onclick="openModal()" data-ru="✏️ Добавить объявление" data-pl="✏️ Dodaj ogłoszenie" data-en="✏️ Add Post" >✏️ Добавить объявление</button>
   </div>
 
   <div class="cork-board">
@@ -1833,24 +1867,24 @@ nav a.active {
 <!-- ===== ABOUT ===== -->
 <div class="page" id="page-about">
   <div class="section-head">
-    <h2>О магазине</h2>
-    <p>Europe Market — ваш европейский магазин во Флориде</p>
+    <h2 data-ru="О магазине" data-pl="O sklepie" data-en="About Us" >О магазине</h2>
+    <p data-ru="Europe Market — ваш европейский магазин во Флориде" data-pl="Europe Market — Twój europejski sklep na Florydzie" data-en="Europe Market — your European store in Florida" >Europe Market — ваш европейский магазин во Флориде</p>
   </div>
   <div class="about-cards">
     <div class="about-card">
-      <h3>🏪 О нас</h3>
-      <p>Europe Market — европейский продуктовый магазин в Fort Myers. Мы привозим лучшие продукты из России, Украины, Польши, Германии и других стран Европы. Колбасы, молочные продукты, хлеб, конфеты, консервы — всё, что вы любите!</p>
+      <h3>🏪 <span data-ru="О нас" data-pl="O nas" data-en="About Us" >О нас</span></h3>
+      <p data-ru="Europe Market — европейский продуктовый магазин в Fort Myers. Мы привозим лучшие продукты из России, Украины, Польши, Германии и других стран Европы. Колбасы, молочные продукты, хлеб, конфеты, консервы — всё, что вы любите!" data-en="Europe Market is a European grocery store in Fort Myers. We bring the best products from Russia, Ukraine, Poland, Germany and other European countries. Sausages, dairy, bread, candy, canned goods — everything you love!" data-pl="Europe Market to europejski sklep spożywczy w Fort Myers. Sprowadzamy najlepsze produkty z Rosji, Ukrainy, Polski, Niemiec i innych krajów Europy. Kiełbasy, nabiał, chleb, cukierki, konserwy — wszystko, co kochasz!" >Europe Market — европейский продуктовый магазин в Fort Myers. Мы привозим лучшие продукты из России, Украины, Польши, Германии и других стран Европы. Колбасы, молочные продукты, хлеб, конфеты, консервы — всё, что вы любите!</p>
     </div>
     <div class="about-card">
-      <h3>🍲 Кухня и Deli</h3>
-      <p>У нас есть горячие обеды: супы, вторые блюда, сэндвичи. Свежая выпечка каждый день. Кофе и чай на вынос. Deli — нарежем колбасу и сыр по вашему вкусу. Красная и чёрная икра.</p>
+      <h3>🍲 <span data-ru="Кухня и Deli" data-pl="Kuchnia i Deli" data-en="Kitchen & Deli" >Кухня и Deli</span></h3>
+      <p data-ru="У нас есть горячие обеды: супы, вторые блюда, сэндвичи. Свежая выпечка каждый день. Кофе и чай на вынос. Deli — нарежем колбасу и сыр по вашему вкусу. Красная и чёрная икра." data-en="We offer hot lunches: soups, main courses, sandwiches. Fresh baked goods daily. Coffee and tea to go. Deli — we'll slice meat and cheese to your liking. Red and black caviar." data-pl="Mamy gorące obiady: zupy, drugie dania, kanapki. Świeże wypieki codziennie. Kawa i herbata na wynos. Deli — pokroimy kiełbasę i ser według Twojego gustu. Czerwony i czarny kawior." >У нас есть горячие обеды: супы, вторые блюда, сэндвичи. Свежая выпечка каждый день. Кофе и чай на вынос. Deli — нарежем колбасу и сыр по вашему вкусу. Красная и чёрная икра.</p>
     </div>
     <div class="about-card">
-      <h3>🤝 Сообщество</h3>
-      <p>Мы не просто магазин — мы центр европейского сообщества в Southwest Florida. На нашей стене объявлений вы можете делиться рецептами, искать земляков, узнавать о наших акциях. Мы принимаем SNAP EBT.</p>
+      <h3>🤝 <span data-ru="Сообщество" data-pl="Społeczność" data-en="Community" >Сообщество</span></h3>
+      <p data-ru="Мы не просто магазин — мы центр европейского сообщества в Southwest Florida. На нашей стене объявлений вы можете делиться рецептами, искать земляков, узнавать о наших акциях. Мы принимаем SNAP EBT." data-en="We're not just a store — we're the center of the European community in Southwest Florida. On our bulletin board you can share recipes, find compatriots, and learn about our sales. We accept SNAP EBT." data-pl="Nie jesteśmy tylko sklepem — jesteśmy centrum europejskiej społeczności w Southwest Florida. Na naszej tablicy ogłoszeń możesz dzielić się przepisami, szukać rodaków, dowiadywać się o promocjach. Akceptujemy SNAP EBT." >Мы не просто магазин — мы центр европейского сообщества в Southwest Florida. На нашей стене объявлений вы можете делиться рецептами, искать земляков, узнавать о наших акциях. Мы принимаем SNAP EBT.</p>
     </div>
     <div class="about-card">
-      <h3>📞 Контакты</h3>
+      <h3>📞 <span data-ru="Контакты" data-pl="Kontakt" data-en="Contacts" >Контакты</span></h3>
       <p>
         <strong>Адрес:</strong> 9131 College Pkwy #120, Fort Myers, FL 33919<br>
         <strong>Телефон:</strong> (239) 270-5210<br>
@@ -2215,6 +2249,150 @@ function sendMsg() {
     box.scrollTop = box.scrollHeight;
   }, 700);
 }
+
+// ===== LANGUAGE SWITCHER =====
+let currentLang = 'ru';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const btnId = lang === 'pl' ? 'langPl' : ('lang' + lang.charAt(0).toUpperCase() + lang.slice(1));
+  document.getElementById(btnId).classList.add('active');
+  
+  // Translate all elements with data-ru/data-en/data-pl
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+}
+
+const translations = {
+  ru: {
+    heroTitle: '<span style="color:#FFFFFF;font-weight:900;">EUROPE</span> <em style="color:#FFD700;font-weight:900;">MARKET</em>',
+    heroSub: 'Grocery Store from Europe',
+    heroDesc: 'Европейский продуктовый магазин в Fort Myers, Florida.<br>Продукты из <strong>России</strong>, <strong>Белоруссии</strong>, <strong>Украины</strong>, <strong>Польши</strong>, <strong>Германии</strong>, <strong>Чехии</strong> и других стран — <em style="color:var(--gold);font-style:normal;font-weight:800;">всё как дома!</em>',
+    tag1:'🍖 Мясо и колбасы', tag2:'🧀 Сыры и молочное', tag3:'🍞 Свежий хлеб',
+    tag4:'🍬 Конфеты и сладости', tag5:'☕ Кофе и чай', tag6:'🥣 Горячие обеды',
+    welcomeTitle:'Добро пожаловать!', welcomeSub:'Ваш кусочек Европы в Southwest Florida',
+    couponText:'📧 Нажмите чтобы получить купон по Email или SMS 📱',
+    svc1title:'Горячие обеды', svc1desc:'Супы, вторые блюда',
+    svc2title:'Сэндвичи', svc2desc:'Свежие, на заказ',
+    svc3title:'Кофе и чай', svc3desc:'Напитки с собой',
+    svc4title:'Выпечка', svc4desc:'Свежая, каждый день',
+    svc5title:'Deli', svc5desc:'Нарезка на заказ',
+    svc6title:'Икра и рыба', svc6desc:'Красная, чёрная икра',
+    prodTitle:'Наши продукты', prodSub:'Более 2000 наименований из Европы',
+    filterAll:'📋 Все', filterMeat:'🥩 Мясо', filterDairy:'🧀 Молочное', filterSweets:'🍬 Сладости',
+    filterBread:'🍞 Хлеб', filterCanned:'🫙 Консервы', filterDrinks:'🥤 Напитки', filterSpices:'🧂 Крупы и специи',
+    boardTitle:'📌 Стена объявлений', addNote:'✏️ Добавить объявление',
+    bfAll:'📋 Все', bfStore:'🏪 Магазин', bfSale:'🏷️ Акции', bfRecipe:'🍳 Рецепты',
+    bfCommunity:'👥 Сообщество', bfJob:'💼 Работа', bfSearch:'🔍 Ищу',
+    aboutTitle:'О магазине', aboutSub:'Europe Market — ваш европейский магазин во Флориде',
+    about1title:'🏪 О нас', about1text:'Europe Market — европейский продуктовый магазин в Fort Myers. Мы привозим лучшие продукты из России, Белоруссии, Украины, Польши, Германии, Чехии и других стран Европы. Колбасы, молочные продукты, хлеб, конфеты, консервы — всё, что вы любите!',
+    about2title:'🍲 Кухня и Deli', about2text:'У нас есть горячие обеды: супы, вторые блюда, сэндвичи. Свежая выпечка каждый день. Кофе и чай на вынос. Deli — нарежем колбасу и сыр по вашему вкусу. Красная и чёрная икра.',
+    about3title:'🤝 Сообщество', about3text:'Мы не просто магазин — мы центр европейского сообщества в Southwest Florida. На нашей стене объявлений вы можете делиться рецептами, искать земляков, узнавать о наших акциях. Мы принимаем SNAP EBT.',
+    about4title:'📞 Контакты',
+    mapBtn:'Проложить маршрут →',
+    msgTitle:'💬 Сообщения', msgLoginTitle:'Europe Market Chat',
+    msgLoginDesc:'Мессенджер сообщества Europe Market. Общайтесь с земляками, задавайте вопросы магазину!',
+    msgLoginPlaceholder:'Введите ваше имя...', msgLoginBtn:'Войти в чат →',
+    msgSearchPlaceholder:'Поиск контактов...', msgInputPlaceholder:'Написать сообщение...',
+    msgEmptyTitle:'Выберите чат', msgEmptyDesc:'Выберите контакт слева чтобы начать переписку',
+    couponModalTitle:'Получите купон 5% OFF!',
+    couponModalDesc:'Выберите способ получения купона. Покажите купон на кассе Europe Market.',
+    couponEmailBtn:'📧 Email', couponSmsBtn:'📱 SMS',
+    couponEmailPlaceholder:'Ваш email адрес...', couponSmsPlaceholder:'Ваш номер телефона...',
+    couponSendBtn:'Отправить купон 🎉', couponSuccessTitle:'Купон отправлен!',
+    couponSuccessDesc:'Покажите купон на кассе Europe Market для получения скидки 5%',
+    couponYour:'Ваш купон', couponCancel:'Отмена', couponClose:'Закрыть',
+    noteModalTitle:'✏️ Новое объявление', noteName:'Ваше имя', noteNamePh:'Как вас зовут?',
+    noteCat:'Категория', noteText:'Текст объявления', noteTextPh:'Напишите здесь...',
+    noteCancelBtn:'Отмена', noteSubmitBtn:'Прикрепить на стену 📌'
+  },
+  en: {
+    heroTitle: '<span style="color:#FFFFFF;font-weight:900;">EUROPE</span> <em style="color:#FFD700;font-weight:900;">MARKET</em>',
+    heroSub: 'Grocery Store from Europe',
+    heroDesc: 'European grocery store in Fort Myers, Florida.<br>Products from <strong>Russia</strong>, <strong>Belarus</strong>, <strong>Ukraine</strong>, <strong>Poland</strong>, <strong>Germany</strong>, <strong>Czech Republic</strong> and other countries — <em style="color:var(--gold);font-style:normal;font-weight:800;">just like home!</em>',
+    tag1:'🍖 Meat & Sausages', tag2:'🧀 Cheese & Dairy', tag3:'🍞 Fresh Bread',
+    tag4:'🍬 Candy & Sweets', tag5:'☕ Coffee & Tea', tag6:'🥣 Hot Lunches',
+    welcomeTitle:'Welcome!', welcomeSub:'Your piece of Europe in Southwest Florida',
+    couponText:'📧 Click to get your coupon via Email or SMS 📱',
+    svc1title:'Hot Lunches', svc1desc:'Soups, main dishes',
+    svc2title:'Sandwiches', svc2desc:'Fresh, made to order',
+    svc3title:'Coffee & Tea', svc3desc:'Drinks to go',
+    svc4title:'Bakery', svc4desc:'Fresh, every day',
+    svc5title:'Deli', svc5desc:'Sliced to order',
+    svc6title:'Caviar & Fish', svc6desc:'Red & black caviar',
+    prodTitle:'Our Products', prodSub:'Over 2,000 items from Europe',
+    filterAll:'📋 All', filterMeat:'🥩 Meat', filterDairy:'🧀 Dairy', filterSweets:'🍬 Sweets',
+    filterBread:'🍞 Bread', filterCanned:'🫙 Canned', filterDrinks:'🥤 Drinks', filterSpices:'🧂 Grains & Spices',
+    boardTitle:'📌 Bulletin Board', addNote:'✏️ Add Post',
+    bfAll:'📋 All', bfStore:'🏪 Store', bfSale:'🏷️ Sales', bfRecipe:'🍳 Recipes',
+    bfCommunity:'👥 Community', bfJob:'💼 Jobs', bfSearch:'🔍 Looking for',
+    aboutTitle:'About the Store', aboutSub:'Europe Market — your European store in Florida',
+    about1title:'🏪 About Us', about1text:'Europe Market is a European grocery store in Fort Myers. We bring the best products from Russia, Belarus, Ukraine, Poland, Germany, Czech Republic and other European countries. Sausages, dairy, bread, candy, canned goods — everything you love!',
+    about2title:'🍲 Kitchen & Deli', about2text:'We have hot lunches: soups, main dishes, sandwiches. Fresh pastries every day. Coffee and tea to go. Deli — we\'ll slice sausage and cheese to your taste. Red and black caviar.',
+    about3title:'🤝 Community', about3text:'We\'re not just a store — we\'re the center of the European community in Southwest Florida. On our bulletin board you can share recipes, find fellow countrymen, learn about our sales. We accept SNAP EBT.',
+    about4title:'📞 Contact',
+    mapBtn:'Get Directions →',
+    msgTitle:'💬 Messages', msgLoginTitle:'Europe Market Chat',
+    msgLoginDesc:'Europe Market community messenger. Chat with neighbors, ask the store questions!',
+    msgLoginPlaceholder:'Enter your name...', msgLoginBtn:'Join Chat →',
+    msgSearchPlaceholder:'Search contacts...', msgInputPlaceholder:'Write a message...',
+    msgEmptyTitle:'Select a Chat', msgEmptyDesc:'Choose a contact on the left to start chatting',
+    couponModalTitle:'Get your 5% OFF Coupon!',
+    couponModalDesc:'Choose how to receive your coupon. Show it at the Europe Market checkout.',
+    couponEmailBtn:'📧 Email', couponSmsBtn:'📱 SMS',
+    couponEmailPlaceholder:'Your email address...', couponSmsPlaceholder:'Your phone number...',
+    couponSendBtn:'Send Coupon 🎉', couponSuccessTitle:'Coupon Sent!',
+    couponSuccessDesc:'Show this coupon at Europe Market checkout for 5% off',
+    couponYour:'Your Coupon', couponCancel:'Cancel', couponClose:'Close',
+    noteModalTitle:'✏️ New Post', noteName:'Your Name', noteNamePh:'What\'s your name?',
+    noteCat:'Category', noteText:'Post Text', noteTextPh:'Write here...',
+    noteCancelBtn:'Cancel', noteSubmitBtn:'Pin to the board 📌'
+  },
+  pl: {
+    heroTitle: '<span style="color:#FFFFFF;font-weight:900;">EUROPE</span> <em style="color:#FFD700;font-weight:900;">MARKET</em>',
+    heroSub: 'Grocery Store from Europe',
+    heroDesc: 'Europejski sklep spożywczy w Fort Myers, Floryda.<br>Produkty z <strong>Rosji</strong>, <strong>Białorusi</strong>, <strong>Ukrainy</strong>, <strong>Polski</strong>, <strong>Niemiec</strong>, <strong>Czech</strong> i innych krajów — <em style="color:var(--gold);font-style:normal;font-weight:800;">wszystko jak w domu!</em>',
+    tag1:'🍖 Mięso i kiełbasy', tag2:'🧀 Sery i nabiał', tag3:'🍞 Świeży chleb',
+    tag4:'🍬 Cukierki i słodycze', tag5:'☕ Kawa i herbata', tag6:'🥣 Gorące obiady',
+    welcomeTitle:'Witamy!', welcomeSub:'Twój kawałek Europy w Southwest Florida',
+    couponText:'📧 Kliknij aby otrzymać kupon przez Email lub SMS 📱',
+    svc1title:'Gorące obiady', svc1desc:'Zupy, dania główne',
+    svc2title:'Kanapki', svc2desc:'Świeże, na zamówienie',
+    svc3title:'Kawa i herbata', svc3desc:'Napoje na wynos',
+    svc4title:'Piekarnia', svc4desc:'Świeże, codziennie',
+    svc5title:'Deli', svc5desc:'Krojone na zamówienie',
+    svc6title:'Kawior i ryby', svc6desc:'Czerwony i czarny kawior',
+    prodTitle:'Nasze produkty', prodSub:'Ponad 2000 artykułów z Europy',
+    filterAll:'📋 Wszystkie', filterMeat:'🥩 Mięso', filterDairy:'🧀 Nabiał', filterSweets:'🍬 Słodycze',
+    filterBread:'🍞 Pieczywo', filterCanned:'🫙 Konserwy', filterDrinks:'🥤 Napoje', filterSpices:'🧂 Kasze i przyprawy',
+    boardTitle:'📌 Tablica ogłoszeń', addNote:'✏️ Dodaj ogłoszenie',
+    bfAll:'📋 Wszystkie', bfStore:'🏪 Sklep', bfSale:'🏷️ Promocje', bfRecipe:'🍳 Przepisy',
+    bfCommunity:'👥 Społeczność', bfJob:'💼 Praca', bfSearch:'🔍 Szukam',
+    aboutTitle:'O sklepie', aboutSub:'Europe Market — Twój europejski sklep na Florydzie',
+    about1title:'🏪 O nas', about1text:'Europe Market to europejski sklep spożywczy w Fort Myers. Sprowadzamy najlepsze produkty z Rosji, Białorusi, Ukrainy, Polski, Niemiec, Czech i innych krajów Europy. Kiełbasy, nabiał, chleb, cukierki, konserwy — wszystko, co kochasz!',
+    about2title:'🍲 Kuchnia i Deli', about2text:'Mamy gorące obiady: zupy, drugie dania, kanapki. Świeże wypieki codziennie. Kawa i herbata na wynos. Deli — pokroimy kiełbasę i ser według Twojego gustu. Czerwony i czarny kawior.',
+    about3title:'🤝 Społeczność', about3text:'Nie jesteśmy tylko sklepem — jesteśmy centrum europejskiej społeczności w Southwest Florida. Na naszej tablicy ogłoszeń możesz dzielić się przepisami, szukać rodaków, dowiadywać się o promocjach. Akceptujemy SNAP EBT.',
+    about4title:'📞 Kontakt',
+    mapBtn:'Wyznacz trasę →',
+    msgTitle:'💬 Wiadomości', msgLoginTitle:'Europe Market Chat',
+    msgLoginDesc:'Komunikator społeczności Europe Market. Rozmawiaj z sąsiadami, zadawaj pytania sklepowi!',
+    msgLoginPlaceholder:'Wpisz swoje imię...', msgLoginBtn:'Dołącz do czatu →',
+    msgSearchPlaceholder:'Szukaj kontaktów...', msgInputPlaceholder:'Napisz wiadomość...',
+    msgEmptyTitle:'Wybierz czat', msgEmptyDesc:'Wybierz kontakt po lewej aby rozpocząć rozmowę',
+    couponModalTitle:'Odbierz kupon 5% zniżki!',
+    couponModalDesc:'Wybierz sposób otrzymania kuponu. Pokaż go przy kasie Europe Market.',
+    couponEmailBtn:'📧 Email', couponSmsBtn:'📱 SMS',
+    couponEmailPlaceholder:'Twój adres email...', couponSmsPlaceholder:'Twój numer telefonu...',
+    couponSendBtn:'Wyślij kupon 🎉', couponSuccessTitle:'Kupon wysłany!',
+    couponSuccessDesc:'Pokaż kupon przy kasie Europe Market aby otrzymać 5% zniżki',
+    couponYour:'Twój kupon', couponCancel:'Anuluj', couponClose:'Zamknij',
+    noteModalTitle:'✏️ Nowe ogłoszenie', noteName:'Twoje imię', noteNamePh:'Jak masz na imię?',
+    noteCat:'Kategoria', noteText:'Treść ogłoszenia', noteTextPh:'Napisz tutaj...',
+    noteCancelBtn:'Anuluj', noteSubmitBtn:'Przypnij do tablicy 📌'
+  }
+};
 
 // ===== MESSENGER =====
 let currentUser = '';
